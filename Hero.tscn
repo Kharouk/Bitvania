@@ -66,10 +66,15 @@ hframes = 12
 frame = 7
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -1, -7 )
+position = Vector2( 0, -8 )
 shape = SubResource( 1 )
 
 [node name="SpriteAnimator" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 2 )
 anims/Jump = SubResource( 3 )
 anims/Run = SubResource( 4 )
+
+[node name="CameraFollow" type="RemoteTransform2D" parent="."]
+position = Vector2( 0, -8 )
+update_rotation = false
+update_scale = false

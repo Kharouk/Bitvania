@@ -17,6 +17,9 @@ __meta__ = {
 [node name="Hero" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 160 )
 
+[node name="CameraFollow" parent="Hero" index="3"]
+remote_path = NodePath("../../Camera")
+
 [node name="Brick" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 160 )
 
@@ -47,6 +50,9 @@ position = Vector2( 32, 160 )
 [node name="Brick9" parent="." instance=ExtResource( 1 )]
 position = Vector2( 48, 160 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( 16, 152 )
 current = true
 smoothing_enabled = true
+
+[editable path="Hero"]

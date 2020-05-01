@@ -10,14 +10,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Hero" parent="." instance=ExtResource( 2 )]
-position = Vector2( 16, 80 )
+position = Vector2( 16, 160 )
 
 [node name="Brick" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 160 )
 
 [node name="Brick2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 16, 160 )
+
+[node name="Brick4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 160 )
+
+[node name="Brick3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 128 )
+
+[node name="Brick6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 96, 144 )
+
+[node name="Brick5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 160 )
+
+[node name="Brick8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 144 )
+
+[node name="Brick7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 64, 144 )
+
+[node name="Brick10" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32, 160 )
+
+[node name="Brick9" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 160 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true

@@ -14,6 +14,9 @@ export (int) var MAX_SLOPE_ANGLE = 46
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
 
+onready var sprite = $Sprite
+onready var spriteAnimator = $SpriteAnimator
+
 # similar to _process but for physics based movement
 func _physics_process(delta):
 	var input_vector = get_input_vector()
@@ -21,6 +24,7 @@ func _physics_process(delta):
 	apply_friction(input_vector)
 	jump_check()
 	apply_gravity(delta)
+	update_animations(input_vector)
 	move_hero()
 
 func get_input_vector():
@@ -54,6 +58,20 @@ func apply_gravity(delta):
 	motion.y += GRAVITY * delta
 	# prevents us from falling faster than our jump force:
 	motion.y = min(motion.y, JUMP_FORCE)
+
+func update_animations(input_vector):
+	if input_vector.x != 0:
+		# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
+		# have to use it since controllers might give a different number
+#		sprite.scale.x = sign(input_vector.x)
+		sprite.flip_h = true
+		spriteAnimator.play("Run")
+	else:
+		spriteAnimator.play("Idle")
+	
+	if not is_on_floor():
+		spriteAnimator.play("Jump")
+		
 
 func move_hero():
 	# detects collision with other bodies; allows you to keep moving against the other body as you "slide"

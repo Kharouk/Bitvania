@@ -63,13 +63,13 @@ script = ExtResource( 2 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 1 )
 hframes = 12
-frame = 11
+frame = 7
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( -1, -7 )
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="SpriteAnimator" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 2 )
 anims/Jump = SubResource( 3 )
 anims/Run = SubResource( 4 )

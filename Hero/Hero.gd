@@ -2,6 +2,8 @@ extends KinematicBody2D
 # Kinematic bodies are user-controlled bodies that don't really know physics unless we assign it some
 # other bodies typically look at it as if it was a static body (check docs)
 
+const DustEffect: PackedScene = preload("res://Effects/DustEffect.tscn")
+
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
 export (float) var FRICTION = 0.25
@@ -33,6 +35,14 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animations(input_vector)
 	move_hero()
+	
+func create_dust_effect():
+	var dust_position = global_position # the origin is at the hero's feet
+	dust_position.x += rand_range(-4, 4)
+	var dustEffect = DustEffect.instance()
+	print(get_tree().current_scene.name)
+	get_tree().current_scene.add_child(dustEffect)
+	dustEffect.global_position = dust_position
 
 func get_input_vector() -> Vector2:
 	var input_vector = Vector2.ZERO
@@ -102,6 +112,7 @@ func move_hero():
 	if was_in_air and is_on_floor():
 		# If we are landing on a slope, we keep our previous momentum; no awkward stopping
 		motion.x = last_motion.x
+		create_dust_effect()
 
 	# Just left ground:
 	if was_on_floor and !is_on_floor() and not has_just_jumped:

@@ -83,10 +83,10 @@ func apply_gravity(delta):
 		motion.y = min(motion.y, JUMP_FORCE)
 
 func update_animations(input_vector):
+	# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
+	# have to use it since controllers might give a different number
+	sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x != 0:
-		# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
-		# have to use it since controllers might give a different number
-		sprite.scale.x = sign(input_vector.x)
 		spriteAnimator.play("Run")
 	else:
 		spriteAnimator.play("Idle")

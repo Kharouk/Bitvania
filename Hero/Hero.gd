@@ -2,7 +2,7 @@ extends KinematicBody2D
 # Kinematic bodies are user-controlled bodies that don't really know physics unless we assign it some
 # other bodies typically look at it as if it was a static body (check docs)
 
-const DustEffect: PackedScene = preload("res://Effects/DustEffect.tscn")
+const DustEffect = preload("res://Effects/DustEffect.tscn")
 
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
@@ -40,7 +40,6 @@ func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet
 	dust_position.x += rand_range(-4, 4)
 	var dustEffect = DustEffect.instance()
-	print(get_tree().current_scene.name)
 	get_tree().current_scene.add_child(dustEffect)
 	dustEffect.global_position = dust_position
 

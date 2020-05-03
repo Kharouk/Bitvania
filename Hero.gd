@@ -14,11 +14,13 @@ export (int) var MAX_SLOPE_ANGLE = 46
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
 
-var snap_vector := Vector2.DOWN * 4
+var snap_vector := Vector2.DOWN
 var has_just_jumped : bool = false
 
 onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
+# allows us to jump after we leave the platform:
+onready var coyoteJumpTimer = $CoyoteJumpTimer
 
 # similar to _process but for physics based movement
 func _physics_process(delta):
@@ -54,9 +56,8 @@ func update_snap_vector():
 	if is_on_floor():
 		snap_vector = Vector2.DOWN
 		
-
 func jump_check():
-	if is_on_floor():
+	if is_on_floor() or coyoteJumpTimer.time_left > 0:
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = -JUMP_FORCE
 			has_just_jumped = true
@@ -107,6 +108,7 @@ func move_hero():
 		# prevents it from hopping the player when going up a slope 
 		motion.y = 0
 		position.y = last_position.y
+		coyoteJumpTimer.start()
 	
 	# Prevent sliding (hack)
 	if is_on_floor() and get_floor_velocity().length() == 0 and abs(motion.x) < 1:

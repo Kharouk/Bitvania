@@ -78,3 +78,7 @@ anims/Run = SubResource( 4 )
 position = Vector2( 0, -8 )
 update_rotation = false
 update_scale = false
+
+[node name="CoyoteJumpTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

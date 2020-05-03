@@ -39,9 +39,7 @@ func _physics_process(delta):
 func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet
 	dust_position.x += rand_range(-4, 4)
-	var dustEffect = DustEffect.instance()
-	get_tree().current_scene.add_child(dustEffect)
-	dustEffect.global_position = dust_position
+	Utils.instance_scene_on_main(DustEffect, dust_position)
 
 func get_input_vector() -> Vector2:
 	var input_vector = Vector2.ZERO

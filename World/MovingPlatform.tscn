@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/World/MovingPlatform.png" type="Texture" id=1]
 
@@ -10,9 +10,27 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -65 )
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Loop"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
 [node name="MovingPlatform" type="Node2D"]
 
 [node name="Body" type="KinematicBody2D" parent="."]
+position = Vector2( 0, -40.663 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
 texture = ExtResource( 1 )
@@ -24,5 +42,14 @@ shape = SubResource( 1 )
 curve = SubResource( 2 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 0, -40.663 )
+offset = 40.6593
 rotate = false
 loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+remote_path = NodePath("../../../Body")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Loop"
+anims/Loop = SubResource( 3 )

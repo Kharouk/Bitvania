@@ -3,6 +3,7 @@ extends KinematicBody2D
 # other bodies typically look at it as if it was a static body (check docs)
 
 const DustEffect = preload("res://Effects/DustEffect.tscn")
+const PlayerBullet = preload("res://Hero/Gun/PlayerBullet.tscn")
 
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
@@ -12,6 +13,8 @@ export (int) var GRAVITY = 200
 export (int) var JUMP_FORCE = 128
 # makes slopes of a 45 degree "work"
 export (int) var MAX_SLOPE_ANGLE = 46
+
+export (int) var BULLET_SPEED = 250
 
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
@@ -23,6 +26,10 @@ onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
 # allows us to jump after we leave the platform:
 onready var coyoteJumpTimer = $CoyoteJumpTimer
+# setting up our gun's "fire rate"
+onready var fireBulletTimer = $FireBulletTimer
+onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
+onready var gun = $Sprite/PlayerGun
 
 # similar to _process but for physics based movement
 func _physics_process(delta):
@@ -36,12 +43,23 @@ func _physics_process(delta):
 	update_animations(input_vector)
 	move_hero()
 	
+	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
+		fire_bullet()
+
+func fire_bullet():
+	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
+	# setting the velocity based on a right arrow, rotated based on our gun/mouse movement, multiplied by the speed:
+	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
+	# setting the direction of the velocity based on our hero's scale of (-1 -> 1)
+	bullet.velocity.x *= sprite.scale.x
+	# sets the rotation based on the angle representation of the bullet velocity. 
+	bullet.rotation = bullet.velocity.angle()
+	fireBulletTimer.start()
+	
 func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet
 	dust_position.x += rand_range(-4, 4)
-	var dustEffect = DustEffect.instance()
-	get_tree().current_scene.add_child(dustEffect)
-	dustEffect.global_position = dust_position
+	Utils.instance_scene_on_main(DustEffect, dust_position)
 
 func get_input_vector() -> Vector2:
 	var input_vector = Vector2.ZERO
@@ -83,12 +101,14 @@ func apply_gravity(delta):
 		motion.y = min(motion.y, JUMP_FORCE)
 
 func update_animations(input_vector):
+	# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
+	# have to use it since controllers might give a different number
+	sprite.scale.x = sign(get_local_mouse_position().x)
 	if input_vector.x != 0:
-		# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
-		# have to use it since controllers might give a different number
-		sprite.scale.x = sign(input_vector.x)
 		spriteAnimator.play("Run")
+		spriteAnimator.playback_speed = input_vector.x * sprite.scale.x
 	else:
+		spriteAnimator.playback_speed = 1
 		spriteAnimator.play("Idle")
 	
 	if not is_on_floor():

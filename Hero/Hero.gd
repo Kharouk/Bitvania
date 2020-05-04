@@ -3,6 +3,7 @@ extends KinematicBody2D
 # other bodies typically look at it as if it was a static body (check docs)
 
 const DustEffect = preload("res://Effects/DustEffect.tscn")
+const PlayerBullet = preload("res://Hero/PlayerBullet.tscn")
 
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
@@ -12,6 +13,8 @@ export (int) var GRAVITY = 200
 export (int) var JUMP_FORCE = 128
 # makes slopes of a 45 degree "work"
 export (int) var MAX_SLOPE_ANGLE = 46
+
+export (int) var BULLET_SPEED = 250
 
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
@@ -23,6 +26,8 @@ onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
 # allows us to jump after we leave the platform:
 onready var coyoteJumpTimer = $CoyoteJumpTimer
+onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
+onready var gun = $Sprite/PlayerGun
 
 # similar to _process but for physics based movement
 func _physics_process(delta):
@@ -35,6 +40,14 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animations(input_vector)
 	move_hero()
+
+func fire_bullet():
+	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
+	# setting the velocity based on a right arrow, rotated based on our gun/mouse movement, multiplied by the speed:
+	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
+	# setting the direction of the velocity based on our hero's scale of (-1 -> 1)
+	bullet.velocity.x *= sprite.scale.x
+	bullet.rotation = bullet.velocity.angle()
 	
 func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet

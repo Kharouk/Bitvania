@@ -40,6 +40,9 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	update_animations(input_vector)
 	move_hero()
+	
+	if Input.is_action_just_pressed("fire"):
+		fire_bullet()
 
 func fire_bullet():
 	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
@@ -47,6 +50,7 @@ func fire_bullet():
 	bullet.velocity = Vector2.RIGHT.rotated(gun.rotation) * BULLET_SPEED
 	# setting the direction of the velocity based on our hero's scale of (-1 -> 1)
 	bullet.velocity.x *= sprite.scale.x
+	# sets the rotation based on the angle representation of the bullet velocity. 
 	bullet.rotation = bullet.velocity.angle()
 	
 func create_dust_effect():

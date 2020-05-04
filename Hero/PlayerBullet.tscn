@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/Player/PlayerBullet.png" type="Texture" id=1]
 [ext_resource path="res://Hero/Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hero/PlayerBullet.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fire"
@@ -19,12 +20,28 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_process"
+} ]
+}
 
 [node name="PlayerBullet" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
 hframes = 2
+frame = 1
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "Fire"

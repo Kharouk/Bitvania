@@ -3,7 +3,7 @@ extends KinematicBody2D
 # other bodies typically look at it as if it was a static body (check docs)
 
 const DustEffect = preload("res://Effects/DustEffect.tscn")
-const PlayerBullet = preload("res://Hero/PlayerBullet.tscn")
+const PlayerBullet = preload("res://Hero/Gun/PlayerBullet.tscn")
 
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
@@ -26,6 +26,8 @@ onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
 # allows us to jump after we leave the platform:
 onready var coyoteJumpTimer = $CoyoteJumpTimer
+# setting up our gun's "fire rate"
+onready var fireBulletTimer = $FireBulletTimer
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
 
@@ -41,7 +43,7 @@ func _physics_process(delta):
 	update_animations(input_vector)
 	move_hero()
 	
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
 		fire_bullet()
 
 func fire_bullet():
@@ -52,6 +54,7 @@ func fire_bullet():
 	bullet.velocity.x *= sprite.scale.x
 	# sets the rotation based on the angle representation of the bullet velocity. 
 	bullet.rotation = bullet.velocity.angle()
+	fireBulletTimer.start()
 	
 func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet

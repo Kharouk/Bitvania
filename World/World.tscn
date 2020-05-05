@@ -1,9 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/World.gd" type="Script" id=3]
 [ext_resource path="res://World/MovingPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Paths/LeftRight.tres" type="Curve2D" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Loop"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Path2D/PathFollow2D:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="World" type="Node"]
 script = ExtResource( 3 )
@@ -34,4 +52,22 @@ tile_data = PoolIntArray( -65535, 0, 4, -65534, 0, 196609, -65533, 0, 6, -65532,
 [node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
 position = Vector2( 112, 96 )
 
+[node name="Test" parent="." instance=ExtResource( 4 )]
+position = Vector2( -96, 128 )
+
+[node name="Body" parent="Test" index="0"]
+position = Vector2( 0.215088, 0 )
+
+[node name="Path2D" parent="Test" index="1"]
+curve = ExtResource( 5 )
+
+[node name="PathFollow2D" parent="Test/Path2D" index="0"]
+position = Vector2( 0.215086, 0 )
+offset = 0.376113
+
+[node name="AnimationPlayer" parent="Test" index="2"]
+anims/Loop = SubResource( 1 )
+
 [editable path="Hero"]
+
+[editable path="Test"]

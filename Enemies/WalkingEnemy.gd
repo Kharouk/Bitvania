@@ -17,7 +17,7 @@ onready var wallRight = $WallRight
 func _ready():
 	state = WALKING_DIRECTION
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	# like a switch statement:
 	match state:
 		DIRECTION.RIGHT:
@@ -35,5 +35,5 @@ func _physics_process(delta):
 	# get our motion.x 'signed' so that it's 1 or -1 for direction 
 	sprite.scale.x = sign(motion.x)
 	
-	# passing in our motion, setting the 'intensite of the snap', which direction the floor is pointing towards, apply to slope, 4?, and the radian of 46 for slopes
+	# passing in our motion, setting the 'intensity of the snap', which direction the floor is pointing towards, apply to slope, 4?, and the radian of 46 for slopes
 	motion = move_and_slide_with_snap(motion, Vector2.DOWN * 4, Vector2.UP, true, 4, deg2rad(46))

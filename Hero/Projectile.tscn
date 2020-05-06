@@ -15,3 +15,5 @@ rect = Rect2( -4, -4, 8, 8 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
 [connection signal="viewport_exited" from="Visibility" to="." method="_on_Visibility_viewport_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

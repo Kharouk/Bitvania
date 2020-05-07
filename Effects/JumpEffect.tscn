@@ -42,4 +42,5 @@ hframes = 4
 frame = 3
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Animate"
 anims/Animate = SubResource( 1 )

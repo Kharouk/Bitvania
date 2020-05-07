@@ -17,6 +17,8 @@ export (int) var MAX_SLOPE_ANGLE = 46
 
 export (int) var BULLET_SPEED = 250
 
+var invincible = false setget set_invincible
+
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
 
@@ -25,12 +27,16 @@ var has_just_jumped : bool = false
 
 onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
+onready var blinkAnimator = $BlinkAnimator
 # allows us to jump after we leave the platform:
 onready var coyoteJumpTimer = $CoyoteJumpTimer
 # setting up our gun's "fire rate"
 onready var fireBulletTimer = $FireBulletTimer
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
+
+func set_invincible(value):
+	invincible = value
 
 # similar to _process but for physics based movement
 func _physics_process(delta):
@@ -147,3 +153,8 @@ func move_hero():
 		# if we are on a slope, that is not moving, and we are sliding just a little bit, then set our position to the position we are at when we first touch the slope
 		position.x = last_position.x
 	
+
+
+func _on_Hurtbox_hit(damage):
+	if not invincible:
+		blinkAnimator.play("Blink")

@@ -155,6 +155,6 @@ func move_hero():
 	
 
 
-func _on_Hurtbox_hit(damage):
+func _on_Hurtbox_hit(_damage):
 	if not invincible:
 		blinkAnimator.play("Blink")

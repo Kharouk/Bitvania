@@ -39,7 +39,7 @@ __meta__ = {
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 position = Vector2( 16, 160 )
 
-[node name="CameraFollow" parent="Hero" index="3"]
+[node name="CameraFollow" parent="Hero" index="4"]
 remote_path = NodePath("../../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]

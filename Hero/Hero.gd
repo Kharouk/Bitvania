@@ -6,6 +6,8 @@ const DustEffect = preload("res://Effects/DustEffect.tscn")
 const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 const PlayerBullet = preload("res://Hero/Gun/PlayerBullet.tscn")
 
+var PlayerStats = ResourceLoader.PlayerStats
+
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
 export (float) var FRICTION = 0.25

@@ -8,4 +8,5 @@ signal player_died
 
 func set_health(value):
   health = clamp(value, 0, max_health)
-  
+  if health == 0:
+    emit_signal("player_died")

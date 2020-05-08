@@ -2,7 +2,7 @@ extends Resource
 class_name PlayerStats
 
 var max_health = 4
-export(int) var shake_amount = 0.25
+export(float) var shake_amount = 0.25
 
 var health = max_health setget set_health
 

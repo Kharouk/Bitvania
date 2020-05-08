@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-shake_amount = 0
+shake_amount = 0.44

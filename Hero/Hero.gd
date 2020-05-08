@@ -40,6 +40,9 @@ onready var gun = $Sprite/PlayerGun
 func set_invincible(value):
 	invincible = value
 
+func _ready():
+	PlayerStats.connect("player_died", self, "_on_died")
+
 # similar to _process but for physics based movement
 func _physics_process(delta):
 	has_just_jumped = false
@@ -155,8 +158,10 @@ func move_hero():
 		# if we are on a slope, that is not moving, and we are sliding just a little bit, then set our position to the position we are at when we first touch the slope
 		position.x = last_position.x
 	
+func _on_died():
+	queue_free()
 
-
-func _on_Hurtbox_hit(_damage):
+func _on_Hurtbox_hit(damage):
 	if not invincible:
+		PlayerStats.health -= damage
 		blinkAnimator.play("Blink")

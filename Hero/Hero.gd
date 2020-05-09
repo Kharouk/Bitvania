@@ -16,14 +16,20 @@ export (int) var GRAVITY = 200
 export (int) var JUMP_FORCE = 128
 # makes slopes of a 45 degree "work"
 export (int) var MAX_SLOPE_ANGLE = 46
-
 export (int) var BULLET_SPEED = 250
 
-var invincible = false setget set_invincible
+enum {
+	MOVE,
+	WALL_SLIDE
+}
+
+# State can be MOVE or WALL_SLIDE.
+var state = MOVE
 
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
 
+var invincible = false setget set_invincible
 var snap_vector := Vector2.DOWN
 var has_just_jumped : bool = false
 var double_jump := true
@@ -47,14 +53,20 @@ func _ready():
 # similar to _process but for physics based movement
 func _physics_process(delta):
 	has_just_jumped = false
-	var input_vector = get_input_vector()
-	apply_horizontal_force(delta, input_vector)
-	apply_friction(input_vector)
-	update_snap_vector()
-	jump_check()
-	apply_gravity(delta)
-	update_animations(input_vector)
-	move_hero()
+
+	match state:
+		MOVE:
+			var input_vector = get_input_vector()
+			apply_horizontal_force(delta, input_vector)
+			apply_friction(input_vector)
+			update_snap_vector()
+			jump_check()
+			apply_gravity(delta)
+			update_animations(input_vector)
+			move_hero()
+			wall_slide_check()
+		WALL_SLIDE:
+			pass
 	
 	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
 		fire_bullet()
@@ -170,6 +182,12 @@ func move_hero():
 	
 func _on_died():
 	queue_free()
+
+func wall_slide_check():
+	if not is_on_floor() and is_on_wall():
+		state = WALL_SLIDE
+		# you get the double jump skill back on the wall
+		double_jump = true
 
 func _on_Hurtbox_hit(damage):
 	if not invincible:

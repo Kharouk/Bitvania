@@ -2,9 +2,10 @@ extends KinematicBody2D
 # Kinematic bodies are user-controlled bodies that don't really know physics unless we assign it some
 # other bodies typically look at it as if it was a static body (check docs)
 
-const DustEffect = preload("res://Effects/DustEffect.tscn")
 const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 const PlayerBullet = preload("res://Hero/Gun/PlayerBullet.tscn")
+const DustEffect = preload("res://Effects/DustEffect.tscn")
+const WallDustEffect = preload("res://Effects/WallDustEffect.tscn")
 
 var PlayerStats = ResourceLoader.PlayerStats
 
@@ -203,6 +204,7 @@ func wall_slide_check():
 		state = WALL_SLIDE
 		# you get the double jump skill back on the wall
 		double_jump = true
+		create_dust_effect()
 
 func get_wall_axis():
 	var is_right_wall = test_move(transform, Vector2.RIGHT)

@@ -76,14 +76,10 @@ func _physics_process(delta):
 				# Setting the direction of the sprite
 				sprite.scale.x = wall_axis
 
-			# checking for a jump
 			wall_slide_jump_check(wall_axis)
-			# checking if we drop off
-			wall_slide_drop_check(delta)
-			# if we are pressing down, increase speed down
-			wall_slide_down_speed_check(delta)
+			wall_slide_drop(delta)
 			set_motion()
-			wall_detach_check(wall_axis)
+			wall_detach(delta, wall_axis)
 
 
 	
@@ -220,7 +216,14 @@ func wall_slide_jump_check(wall_axis):
 		motion.y = -JUMP_FORCE/1.25
 		state = MOVE
 
-func wall_slide_drop_check(delta):
+func wall_slide_drop(delta):
+	var slide_speed = WALL_SLIDE_SPEED
+	if Input.is_action_pressed("ui_down"):
+		slide_speed = MAX_WALL_SLIDE_SPEED
+
+	motion.y = min(motion.y + GRAVITY * delta, slide_speed)
+
+func wall_detach(delta, wall_axis):
 	if Input.is_action_just_pressed("ui_right"):
 		motion.x = ACCELERATION * delta
 		state = MOVE
@@ -228,14 +231,6 @@ func wall_slide_drop_check(delta):
 		motion.x = -ACCELERATION * delta
 		state = MOVE
 
-func wall_slide_down_speed_check(delta):
-	var slide_speed = WALL_SLIDE_SPEED
-	if Input.is_action_pressed("ui_down"):
-		slide_speed = MAX_WALL_SLIDE_SPEED
-
-	motion.y = min(motion.y + GRAVITY * delta, slide_speed)
-
-func wall_detach_check(wall_axis):
 	if wall_axis == 0 or is_on_floor():
 		state = MOVE
 

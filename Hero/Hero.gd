@@ -75,7 +75,7 @@ func _physics_process(delta):
 			if wall_axis != 0:
 				# Setting the direction of the sprite
 				sprite.scale.x = wall_axis
-				
+
 			# checking for a jump
 			wall_slide_jump_check(wall_axis)
 			# checking if we drop off
@@ -230,7 +230,7 @@ func wall_slide_drop_check(delta):
 
 func wall_slide_down_speed_check(delta):
 	var slide_speed = WALL_SLIDE_SPEED
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down"):
 		slide_speed = MAX_WALL_SLIDE_SPEED
 
 	motion.y = min(motion.y + GRAVITY * delta, slide_speed)

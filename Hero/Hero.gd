@@ -8,6 +8,7 @@ const DustEffect = preload("res://Effects/DustEffect.tscn")
 const WallDustEffect = preload("res://Effects/WallDustEffect.tscn")
 
 var PlayerStats = ResourceLoader.PlayerStats
+var MainInstances = ResourceLoader.MainInstances
 
 export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
@@ -54,6 +55,10 @@ func set_invincible(value):
 
 func _ready():
 	PlayerStats.connect("player_died", self, "_on_died")
+	MainInstances.Player = self
+
+func _exit_tree():
+	MainInstances.Player = null
 
 # similar to _process but for physics based movement
 func _physics_process(delta):

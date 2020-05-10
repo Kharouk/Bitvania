@@ -38,7 +38,7 @@ tracks/1/keys = {
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )
 hframes = 5
-frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Animate"
 anims/Animate = SubResource( 1 )

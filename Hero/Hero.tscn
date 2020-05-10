@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Hero/Hero.gd" type="Script" id=2]
@@ -74,7 +74,22 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Blink"
+resource_name = "Wall Slide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=5]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:visible")
@@ -114,7 +129,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 1 )
 hframes = 12
-frame = 1
+frame = 10
 
 [node name="PlayerGun" parent="Sprite" instance=ExtResource( 3 )]
 show_behind_parent = true
@@ -128,9 +143,10 @@ shape = ExtResource( 5 )
 anims/Idle = SubResource( 1 )
 anims/Jump = SubResource( 2 )
 anims/Run = SubResource( 3 )
+"anims/Wall Slide" = SubResource( 4 )
 
 [node name="BlinkAnimator" type="AnimationPlayer" parent="."]
-anims/Blink = SubResource( 4 )
+anims/Blink = SubResource( 5 )
 
 [node name="CameraFollow" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -8 )

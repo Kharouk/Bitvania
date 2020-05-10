@@ -12,8 +12,14 @@ export (int) var ACCELERATION = 512
 export (int) var MAX_SPEED = 64
 export (float) var FRICTION = 0.25
 
+# Applying Jump Skill
 export (int) var GRAVITY = 200
 export (int) var JUMP_FORCE = 128
+
+# Allow Wall slides
+export (int) var WALL_SLIDE_SPEED = 48
+export (int) var MAX_WALL_SLIDE_SPEED = 128
+
 # makes slopes of a 45 degree "work"
 export (int) var MAX_SLOPE_ANGLE = 46
 export (int) var BULLET_SPEED = 250
@@ -66,7 +72,13 @@ func _physics_process(delta):
 			move_hero()
 			wall_slide_check()
 		WALL_SLIDE:
-			pass
+			spriteAnimator.play("Wall Slide")
+			var wall_axis = get_wall_axis()
+			if wall_axis != 0:
+				# Setting the direction of the sprite
+				sprite.scale.x = wall_axis
+				wall_slide
+
 	
 	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
 		fire_bullet()
@@ -188,6 +200,39 @@ func wall_slide_check():
 		state = WALL_SLIDE
 		# you get the double jump skill back on the wall
 		double_jump = true
+
+func get_wall_axis():
+	var is_right_wall = test_move(transform, Vector2.RIGHT)
+	var is_left_wall = test_move(transform, Vector2.LEFT)
+	var wall_direction_int = int(is_left_wall) - int(is_right_wall)
+	return wall_direction_int
+
+func wall_slide_jump_check(wall_axis):
+	# When hero jumps off the wall:
+	if Input.is_action_just_pressed("ui_up"):
+		motion.x = wall_axis * MAX_SPEED
+		motion.y = -JUMP_FORCE/1.25
+		state = MOVE
+
+func wall_slide_drop_check(delta):
+	# When hero just drops off the wall
+	if Input.is_action_just_pressed("ui_right"):
+		motion.x = ACCELERATION * delta
+		state = MOVE
+	if Input.is_action_just_pressed("ui_left"):
+		motion.x = -ACCELERATION * delta
+		state = MOVE
+
+func wall_slide_down_speed_check(delta):
+	var slide_speed = WALL_SLIDE_SPEED
+	if Input.is_action_just_pressed("ui_down"):
+		slide_speed = MAX_WALL_SLIDE_SPEED
+
+	motion.y = min(motion.y + GRAVITY * delta, slide_speed)
+
+func wall_detach_check(wall_axis):
+	if wall_axis == 0 or is_on_floor():
+		state = MOVE
 
 func _on_Hurtbox_hit(damage):
 	if not invincible:

@@ -31,10 +31,8 @@ enum {
 
 # State can be MOVE or WALL_SLIDE.
 var state = MOVE
-
 # x,y coordinate of 0 -> we are not moving when we start
 var motion = Vector2.ZERO
-
 var invincible = false setget set_invincible
 var snap_vector := Vector2.DOWN
 var has_just_jumped : bool = false
@@ -69,7 +67,7 @@ func _physics_process(delta):
 			jump_check()
 			apply_gravity(delta)
 			update_animations(input_vector)
-			move_hero()
+			set_motion()
 			wall_slide_check()
 		WALL_SLIDE:
 			spriteAnimator.play("Wall Slide")
@@ -77,7 +75,16 @@ func _physics_process(delta):
 			if wall_axis != 0:
 				# Setting the direction of the sprite
 				sprite.scale.x = wall_axis
-				wall_slide
+				
+			# checking for a jump
+			wall_slide_jump_check(wall_axis)
+			# checking if we drop off
+			wall_slide_drop_check(delta)
+			# if we are pressing down, increase speed down
+			wall_slide_down_speed_check(delta)
+			set_motion()
+			wall_detach_check(wall_axis)
+
 
 	
 	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
@@ -161,7 +168,7 @@ func update_animations(input_vector):
 		spriteAnimator.play("Jump")
 		
 
-func move_hero():
+func set_motion():
 	var was_in_air = not is_on_floor()
 	var was_on_floor = is_on_floor()
 	var last_position = position
@@ -208,14 +215,12 @@ func get_wall_axis():
 	return wall_direction_int
 
 func wall_slide_jump_check(wall_axis):
-	# When hero jumps off the wall:
 	if Input.is_action_just_pressed("ui_up"):
 		motion.x = wall_axis * MAX_SPEED
 		motion.y = -JUMP_FORCE/1.25
 		state = MOVE
 
 func wall_slide_drop_check(delta):
-	# When hero just drops off the wall
 	if Input.is_action_just_pressed("ui_right"):
 		motion.x = ACCELERATION * delta
 		state = MOVE

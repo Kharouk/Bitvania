@@ -20,6 +20,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "fire_bullet"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 5.0
@@ -29,12 +43,12 @@ extents = Vector2( 7, 6 )
 
 [node name="PlantEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+SPREAD = 30.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 hframes = 6
-frame = 4
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "Animate"

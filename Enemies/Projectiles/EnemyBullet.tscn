@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/Enemies/EnemyBullet.png" type="Texture" id=1]
 [ext_resource path="res://Hero/Projectile.tscn" type="PackedScene" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Animate"
 length = 0.6
 tracks/0/type = "value"
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 2.9505
 
 [node name="EnemyBullet" instance=ExtResource( 2 )]
@@ -30,12 +30,12 @@ hframes = 2
 frame = 1
 
 [node name="AnimationPlayer" parent="." index="2"]
-anims/Animate = SubResource( 2 )
+anims/Animate = SubResource( 1 )
 
 [node name="Hitbox" parent="." index="3"]
-collision_mask = 14
+collision_mask = 6
 
 [node name="Collider" parent="Hitbox" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [editable path="Hitbox"]

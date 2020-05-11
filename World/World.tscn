@@ -81,17 +81,11 @@ position = Vector2( 48, 160 )
 [node name="FlyingEnemy" parent="." instance=ExtResource( 9 )]
 position = Vector2( 716, -7 )
 
-[node name="FlyingEnemy2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 589, 241 )
-
 [node name="FlyingEnemy3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 735, 143 )
 
 [node name="FlyingEnemy4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 774, 30 )
-
-[node name="FlyingEnemy5" parent="." instance=ExtResource( 9 )]
-position = Vector2( 696, -70 )
 
 [node name="FlyingEnemy6" parent="." instance=ExtResource( 9 )]
 position = Vector2( 496, -16 )

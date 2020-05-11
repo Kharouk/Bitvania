@@ -53,6 +53,9 @@ shape = SubResource( 3 )
 [node name="Collider" parent="Hurtbox" index="0"]
 shape = SubResource( 4 )
 
+[node name="EnemyStats" parent="." index="5"]
+max_health = 2
+
 [editable path="Hitbox"]
 
 [editable path="Hurtbox"]

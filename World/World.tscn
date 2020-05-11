@@ -96,6 +96,21 @@ position = Vector2( 696, -70 )
 [node name="FlyingEnemy6" parent="." instance=ExtResource( 9 )]
 position = Vector2( 496, -16 )
 
+[node name="FlyingEnemy11" parent="." instance=ExtResource( 9 )]
+position = Vector2( 563, 114 )
+
+[node name="FlyingEnemy10" parent="." instance=ExtResource( 9 )]
+position = Vector2( 631, 186 )
+
+[node name="FlyingEnemy9" parent="." instance=ExtResource( 9 )]
+position = Vector2( 627, 60 )
+
+[node name="FlyingEnemy8" parent="." instance=ExtResource( 9 )]
+position = Vector2( 564, 22 )
+
+[node name="FlyingEnemy7" parent="." instance=ExtResource( 9 )]
+position = Vector2( 431, 59 )
+
 [editable path="Hero"]
 
 [editable path="Test"]

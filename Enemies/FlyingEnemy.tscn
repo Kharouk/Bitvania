@@ -32,6 +32,7 @@ radius = 6.0
 
 [node name="FlyingEnemy" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
+MAX_SPEED = 40
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )

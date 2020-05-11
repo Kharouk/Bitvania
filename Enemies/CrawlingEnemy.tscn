@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/Enemies/CrawlingEnemy.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 2 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 3 )
 
 [node name="CrawlingEnemy" instance=ExtResource( 1 )]
 
@@ -9,3 +15,15 @@
 position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 hframes = 4
+
+[node name="Collider" parent="Hitbox" index="0"]
+position = Vector2( 0, -2 )
+shape = SubResource( 2 )
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[editable path="Hitbox"]
+
+[editable path="Hurtbox"]

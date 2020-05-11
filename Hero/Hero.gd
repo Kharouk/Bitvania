@@ -158,7 +158,9 @@ func apply_gravity(delta):
 func update_animations(input_vector):
 	# sign returns -1, 0 or 1 depending if it's negative, zero, or positive
 	# have to use it since controllers might give a different number
-	sprite.scale.x = sign(get_local_mouse_position().x)
+	var facing = sign(get_local_mouse_position().x)
+	if facing != 0:
+		sprite.scale.x = facing
 	if input_vector.x != 0:
 		spriteAnimator.play("Run")
 		spriteAnimator.playback_speed = input_vector.x * sprite.scale.x

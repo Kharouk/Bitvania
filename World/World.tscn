@@ -117,6 +117,11 @@ rotation = 3.14159
 [node name="CrawlingEnemy" parent="." instance=ExtResource( 11 )]
 position = Vector2( 144, 128 )
 
+[node name="CrawlingEnemy2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 112, 128 )
+MAX_SPEED = 30
+WALKING_DIRECTION = -1
+
 [editable path="Hero"]
 
 [editable path="Test"]

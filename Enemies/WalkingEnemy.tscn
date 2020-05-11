@@ -60,7 +60,7 @@ position = Vector2( 0, -8 )
 shape = SubResource( 3 )
 
 [node name="EnemyStats" parent="." index="9"]
-max_health = 3
+max_health = 2
 
 [editable path="Hitbox"]
 

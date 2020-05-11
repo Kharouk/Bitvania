@@ -62,6 +62,9 @@ shape = SubResource( 3 )
 position = Vector2( 0, -6 )
 shape = SubResource( 2 )
 
+[node name="EnemyStats" parent="." index="5"]
+max_health = 3
+
 [node name="BulletSpawnPoint" type="Position2D" parent="." index="6"]
 position = Vector2( 0, -9 )
 

@@ -95,7 +95,8 @@ func _physics_process(delta):
 		fire_bullet()
 
 	if Input.is_action_pressed("fire_missile") and fireWeaponTimer.time_left == 0:
-		fire_missile()
+		if PlayerStats.missiles > 0:
+			fire_missile()
 
 func fire_bullet():
 	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
@@ -114,6 +115,7 @@ func fire_missile():
 	# player's motion (pushing us back as we fire)
 	motion -= missile.velocity * 0.25
 	missile.rotation = missile.velocity.angle()
+	PlayerStats.missiles -= 1
 	fireWeaponTimer.start()
 	
 func create_dust_effect():

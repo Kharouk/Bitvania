@@ -129,7 +129,6 @@ script = ExtResource( 2 )
 position = Vector2( 0, -12 )
 texture = ExtResource( 1 )
 hframes = 12
-frame = 10
 
 [node name="PlayerGun" parent="Sprite" instance=ExtResource( 3 )]
 show_behind_parent = true
@@ -157,7 +156,7 @@ update_scale = false
 wait_time = 0.2
 one_shot = true
 
-[node name="FireBulletTimer" type="Timer" parent="."]
+[node name="FireWeaponTimer" type="Timer" parent="."]
 wait_time = 0.33
 one_shot = true
 
@@ -167,6 +166,15 @@ collision_layer = 4
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2( 0, -8 )
 shape = ExtResource( 5 )
+
+[node name="PowerUpDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpDetector"]
+position = Vector2( 0, -8 )
+shape = ExtResource( 5 )
 [connection signal="hit" from="Hurtbox" to="." method="_on_Hurtbox_hit"]
+[connection signal="area_entered" from="PowerUpDetector" to="." method="_on_PowerUpDetector_area_entered"]
 
 [editable path="Hurtbox"]

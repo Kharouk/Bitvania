@@ -157,7 +157,7 @@ update_scale = false
 wait_time = 0.2
 one_shot = true
 
-[node name="FireBulletTimer" type="Timer" parent="."]
+[node name="FireWeaponTimer" type="Timer" parent="."]
 wait_time = 0.33
 one_shot = true
 

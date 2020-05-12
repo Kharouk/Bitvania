@@ -4,6 +4,7 @@ extends KinematicBody2D
 
 const JumpEffect = preload("res://Effects/JumpEffect.tscn")
 const PlayerBullet = preload("res://Hero/Gun/PlayerBullet.tscn")
+const PlayerMissile = preload("res://Hero/Gun/PlayerMissile.tscn")
 const DustEffect = preload("res://Effects/DustEffect.tscn")
 const WallDustEffect = preload("res://Effects/WallDustEffect.tscn")
 
@@ -25,6 +26,7 @@ export (int) var MAX_WALL_SLIDE_SPEED = 128
 # makes slopes of a 45 degree "work"
 export (int) var MAX_SLOPE_ANGLE = 46
 export (int) var BULLET_SPEED = 250
+export (int) var MISSILE_SPEED = 150
 
 enum {
 	MOVE,
@@ -46,7 +48,7 @@ onready var blinkAnimator = $BlinkAnimator
 # allows us to jump after we leave the platform:
 onready var coyoteJumpTimer = $CoyoteJumpTimer
 # setting up our gun's "fire rate"
-onready var fireBulletTimer = $FireBulletTimer
+onready var fireWeaponTimer = $FireWeaponTimer
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
 
@@ -89,8 +91,11 @@ func _physics_process(delta):
 
 
 	
-	if Input.is_action_pressed("fire") and fireBulletTimer.time_left == 0:
+	if Input.is_action_pressed("fire") and fireWeaponTimer.time_left == 0:
 		fire_bullet()
+
+	if Input.is_action_pressed("fire_missile") and fireWeaponTimer.time_left == 0:
+		fire_missile()
 
 func fire_bullet():
 	var bullet = Utils.instance_scene_on_main(PlayerBullet, muzzle.global_position)
@@ -100,7 +105,16 @@ func fire_bullet():
 	bullet.velocity.x *= sprite.scale.x
 	# sets the rotation based on the angle representation of the bullet velocity. 
 	bullet.rotation = bullet.velocity.angle()
-	fireBulletTimer.start()
+	fireWeaponTimer.start()
+
+func fire_missile():
+	var missile = Utils.instance_scene_on_main(PlayerMissile, muzzle.global_position)
+	missile.velocity = Vector2.RIGHT.rotated(gun.rotation) * MISSILE_SPEED
+	missile.velocity.x *= sprite.scale.x
+	# player's motion (pushing us back as we fire)
+	motion -= missile.velocity * 0.25
+	missile.rotation = missile.velocity.angle()
+	fireWeaponTimer.start()
 	
 func create_dust_effect():
 	var dust_position = global_position # the origin is at the hero's feet

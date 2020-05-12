@@ -13,3 +13,4 @@ func _on_player_missile_changed(amount):
 
 func _on_player_missiles_unlocked(isUnlocked):
   visible = isUnlocked
+  

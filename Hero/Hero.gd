@@ -45,12 +45,11 @@ var double_jump := true
 onready var sprite = $Sprite
 onready var spriteAnimator = $SpriteAnimator
 onready var blinkAnimator = $BlinkAnimator
-# allows us to jump after we leave the platform:
-onready var coyoteJumpTimer = $CoyoteJumpTimer
-# setting up our gun's "fire rate"
-onready var fireWeaponTimer = $FireWeaponTimer
+onready var coyoteJumpTimer = $CoyoteJumpTimer # allows us to jump after we leave the platform:
+onready var fireWeaponTimer = $FireWeaponTimer # setting up our gun's "fire rate"
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
+onready var powerUpDetector = $PowerUpDetector
 
 func set_invincible(value):
 	invincible = value
@@ -266,3 +265,8 @@ func _on_Hurtbox_hit(damage):
 	if not invincible:
 		PlayerStats.health -= damage
 		blinkAnimator.play("Blink")
+
+
+func _on_PowerUpDetector_area_entered(area):
+	if area is PowerUp:
+		area._pickup()

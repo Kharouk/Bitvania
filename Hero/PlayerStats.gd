@@ -8,10 +8,12 @@ var health = max_health setget set_health
 
 var max_missiles = 3
 var missiles = max_missiles setget set_missiles
+var missiles_unlocked = false setget set_missiles_unlocked
 
 signal player_died
 signal player_health_changed(value)
 signal player_missiles_changed(value)
+signal player_missiles_unlocked(value)
 
 func set_health(value):
 	if value < health:
@@ -26,3 +28,7 @@ func set_health(value):
 func set_missiles(value):
 	missiles = clamp(value, 0, max_missiles)
 	emit_signal("player_missiles_changed", missiles)
+
+func set_missiles_unlocked(isUnlocked):
+	missiles_unlocked = isUnlocked
+	emit_signal("player_missiles_unlocked", missiles_unlocked)

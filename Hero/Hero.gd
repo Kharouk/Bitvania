@@ -95,7 +95,7 @@ func _physics_process(delta):
 		fire_bullet()
 
 	if Input.is_action_pressed("fire_missile") and fireWeaponTimer.time_left == 0:
-		if PlayerStats.missiles > 0:
+		if PlayerStats.missiles > 0 && PlayerStats.missiles_unlocked:
 			fire_missile()
 
 func fire_bullet():

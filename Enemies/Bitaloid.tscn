@@ -34,6 +34,9 @@ offset = Vector2( -20, -5 )
 position = Vector2( -12, -12 )
 texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftUpperLeg" index="0"]
 position = Vector2( -12, 3 )
@@ -63,6 +66,9 @@ position = Vector2( 12, -12 )
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
 flip_h = true
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightUpperLeg" index="0"]
 position = Vector2( 12, 3 )
@@ -94,6 +100,9 @@ position = Vector2( -9, 0 )
 rotation = -0.261799
 texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLeg" index="0"]
 position = Vector2( -12.1781, 2.94855 )
@@ -125,6 +134,9 @@ rotation = 0.261799
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
 flip_h = true
+__meta__ = {
+"_edit_ik_": true
+}
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightLowerLeg" index="0"]
 position = Vector2( 13.1512, 3.41098 )

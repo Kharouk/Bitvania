@@ -37,15 +37,33 @@ texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftUpperLeg" index="0"]
+position = Vector2( -12, 3 )
 texture = ExtResource( 7 )
+offset = Vector2( -2, 4 )
 
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftUpperLeg/MiddleSegment" index="0"]
+position = Vector2( -6, 10 )
+rotation = 0.261799
 texture = ExtResource( 6 )
+offset = Vector2( 1, 2 )
 
 [node name="RightUpperLeg" type="Sprite" parent="Sprite" index="4"]
 position = Vector2( 12, -12 )
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
+flip_h = true
+
+[node name="MiddleSegment" type="Sprite" parent="Sprite/RightUpperLeg" index="0"]
+position = Vector2( 12, 3 )
+texture = ExtResource( 7 )
+offset = Vector2( 3, 4 )
+flip_h = true
+
+[node name="EndSegment" type="Sprite" parent="Sprite/RightUpperLeg/MiddleSegment" index="0"]
+position = Vector2( 6, 10 )
+rotation = -0.261799
+texture = ExtResource( 6 )
+offset = Vector2( -1, 2 )
 flip_h = true
 
 [node name="LeftLowerLeg" type="Sprite" parent="Sprite" index="5"]
@@ -54,9 +72,35 @@ rotation = -0.261799
 texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
 
+[node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLeg" index="0"]
+position = Vector2( -11.2122, 3.20736 )
+rotation = -0.436332
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( -2, 4 )
+
+[node name="EndSegment" type="Sprite" parent="Sprite/LeftLowerLeg/MiddleSegment" index="0"]
+position = Vector2( -6.18136, 10.4781 )
+texture = ExtResource( 6 )
+offset = Vector2( 1, 2 )
+
 [node name="RightLowerLeg" type="Sprite" parent="Sprite" index="6"]
 position = Vector2( 9, 0 )
 rotation = 0.261799
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
+flip_h = true
+
+[node name="MiddleSegment" type="Sprite" parent="Sprite/RightLowerLeg" index="0"]
+position = Vector2( 12.4369, 3.91447 )
+rotation = 0.436332
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 2, 4 )
+flip_h = true
+
+[node name="EndSegment" type="Sprite" parent="Sprite/RightLowerLeg/MiddleSegment" index="0"]
+position = Vector2( 6, 10 )
+texture = ExtResource( 6 )
+offset = Vector2( -1, 2 )
 flip_h = true

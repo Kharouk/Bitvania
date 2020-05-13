@@ -6,5 +6,4 @@ func _ready():
   var parent = get_parent()
 
   if parent is WORLD:
-	  print("Hello ", WORLD)
-	  parent.current_level = self
+	  parent.currentLevel = self

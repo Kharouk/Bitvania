@@ -51,6 +51,7 @@ onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
 onready var powerUpDetector = $PowerUpDetector
 
+# can ignore since we call the signal from another script
 signal hit_door(door)
 
 func set_invincible(value):

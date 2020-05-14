@@ -7,6 +7,4 @@ func _ready():
 
 func _physics_process(delta):
   # this will probably be useful soon
-  if delta == "aah that is what delta is":
-	print("have a medal!")
   pass

@@ -688,6 +688,150 @@ tracks/15/keys = {
 "update": 0,
 "values": [ -5.97354, 27.4165 ]
 }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sprite/RightLowerLeg/MiddleSegment/EndSegment:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 6, 10 ), Vector2( 6, 10 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprite/RightLowerLeg/MiddleSegment/EndSegment:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -5.0, 12.5375 ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Sprite/RightLowerLeg/MiddleSegment:position")
+tracks/18/interp = 2
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.1512, 3.41098 ), Vector2( 13.1512, 3.41098 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Sprite/RightLowerLeg/MiddleSegment:rotation_degrees")
+tracks/19/interp = 2
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 16.9716, 22.7354 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Sprite/RightLowerLeg:position")
+tracks/20/interp = 2
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, 0 ), Vector2( 9, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Sprite/RightLowerLeg:rotation_degrees")
+tracks/21/interp = 2
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 23.0284, -0.873087 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment/EndSegment:position")
+tracks/22/interp = 2
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6, 10 ), Vector2( -6, 10 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment/EndSegment:rotation_degrees")
+tracks/23/interp = 2
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 5.0, -7.19366 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment:position")
+tracks/24/interp = 2
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12.1781, 2.94855 ), Vector2( -12.1781, 2.94855 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Sprite/LeftLowerLeg/MiddleSegment:rotation_degrees")
+tracks/25/interp = 2
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -13.6274, -20.0364 ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Sprite/LeftLowerLeg:position")
+tracks/26/interp = 2
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -9, 0 ), Vector2( -9, 0 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Sprite/LeftLowerLeg:rotation_degrees")
+tracks/27/interp = 2
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -16.4852, 1.97689 ]
+}
 
 [sub_resource type="RayShape2D" id=2]
 length = 16.0
@@ -701,17 +845,17 @@ radius = 20.0
 script = ExtResource( 8 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -0.5 )
+position = Vector2( 0, 0.777778 )
 texture = ExtResource( 2 )
 
 [node name="Head" type="Sprite" parent="Sprite" index="0"]
-position = Vector2( 0, -7.5 )
+position = Vector2( 0, -7.88889 )
 texture = ExtResource( 4 )
 
 [node name="LeftWing" type="Sprite" parent="Sprite" index="1"]
 show_behind_parent = true
 position = Vector2( 10.1499, -18.1499 )
-rotation = 1.309
+rotation = -0.785398
 texture = ExtResource( 5 )
 offset = Vector2( 21, -5 )
 flip_h = true
@@ -719,13 +863,13 @@ flip_h = true
 [node name="RightWing" type="Sprite" parent="Sprite" index="2"]
 show_behind_parent = true
 position = Vector2( -10, -18.5 )
-rotation = -1.309
+rotation = 0.785398
 texture = ExtResource( 5 )
 offset = Vector2( -20, -5 )
 
 [node name="LeftUpperLeg" type="Sprite" parent="Sprite" index="3"]
 position = Vector2( -12, -12 )
-rotation = -0.104257
+rotation = 0.100876
 texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
 __meta__ = {
@@ -734,7 +878,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftUpperLeg" index="0"]
 position = Vector2( -12, 3 )
-rotation = 0.0896013
+rotation = -0.0960477
 texture = ExtResource( 7 )
 offset = Vector2( -2, 4 )
 __meta__ = {
@@ -743,7 +887,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftUpperLeg/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
-rotation = 0.102523
+rotation = 0.302601
 texture = ExtResource( 6 )
 offset = Vector2( 1, 2 )
 __meta__ = {
@@ -758,7 +902,7 @@ __meta__ = {
 
 [node name="RightUpperLeg" type="Sprite" parent="Sprite" index="4"]
 position = Vector2( 12, -12 )
-rotation = 0.0481962
+rotation = -0.15455
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
 flip_h = true
@@ -768,7 +912,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightUpperLeg" index="0"]
 position = Vector2( 12, 3 )
-rotation = 0.0954678
+rotation = 0.297558
 texture = ExtResource( 7 )
 offset = Vector2( 3, 4 )
 flip_h = true
@@ -778,7 +922,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/RightUpperLeg/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
-rotation = -0.405463
+rotation = -0.354893
 texture = ExtResource( 6 )
 offset = Vector2( -1, 2 )
 flip_h = true
@@ -794,7 +938,7 @@ __meta__ = {
 
 [node name="LeftLowerLeg" type="Sprite" parent="Sprite" index="5"]
 position = Vector2( -9, 0 )
-rotation = -0.261799
+rotation = -0.07892
 texture = ExtResource( 3 )
 offset = Vector2( -4, 1 )
 __meta__ = {
@@ -803,7 +947,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/LeftLowerLeg" index="0"]
 position = Vector2( -12.1781, 2.94855 )
-rotation = -0.436332
+rotation = -0.310326
 texture = ExtResource( 7 )
 offset = Vector2( -2, 4 )
 __meta__ = {
@@ -812,6 +956,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/LeftLowerLeg/MiddleSegment" index="0"]
 position = Vector2( -6, 10 )
+rotation = -0.0506406
 texture = ExtResource( 6 )
 offset = Vector2( 1, 2 )
 __meta__ = {
@@ -826,7 +971,7 @@ __meta__ = {
 
 [node name="RightLowerLeg" type="Sprite" parent="Sprite" index="6"]
 position = Vector2( 9, 0 )
-rotation = 0.261799
+rotation = 0.131602
 texture = ExtResource( 3 )
 offset = Vector2( 5, 1 )
 flip_h = true
@@ -836,7 +981,7 @@ __meta__ = {
 
 [node name="MiddleSegment" type="Sprite" parent="Sprite/RightLowerLeg" index="0"]
 position = Vector2( 13.1512, 3.41098 )
-rotation = 0.436332
+rotation = 0.361397
 texture = ExtResource( 7 )
 offset = Vector2( 2, 4 )
 flip_h = true
@@ -846,6 +991,7 @@ __meta__ = {
 
 [node name="EndSegment" type="Sprite" parent="Sprite/RightLowerLeg/MiddleSegment" index="0"]
 position = Vector2( 6, 10 )
+rotation = 0.0963863
 texture = ExtResource( 6 )
 offset = Vector2( -1, 2 )
 flip_h = true

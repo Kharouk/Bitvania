@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://resources/Enemies/BossEnemyBody.png" type="Texture" id=2]
@@ -492,6 +492,35 @@ tracks/39/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Fly"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/RightWing:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 45.0, -75.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/LeftWing:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -45.0, 75.0 ]
+}
+
 [sub_resource type="RayShape2D" id=2]
 length = 16.0
 
@@ -512,14 +541,16 @@ texture = ExtResource( 4 )
 
 [node name="LeftWing" type="Sprite" parent="Sprite" index="1"]
 show_behind_parent = true
-position = Vector2( 10, -18 )
+position = Vector2( 10.1499, -18.1499 )
+rotation = -0.607669
 texture = ExtResource( 5 )
 offset = Vector2( 21, -5 )
 flip_h = true
 
 [node name="RightWing" type="Sprite" parent="Sprite" index="2"]
 show_behind_parent = true
-position = Vector2( -10, -18 )
+position = Vector2( -10, -18.1499 )
+rotation = 0.607669
 texture = ExtResource( 5 )
 offset = Vector2( -20, -5 )
 
@@ -656,7 +687,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Fly"
 anims/Base = SubResource( 4 )
+anims/Fly = SubResource( 5 )
 
 [node name="Collider" parent="Hitbox" index="0"]
 shape = SubResource( 2 )

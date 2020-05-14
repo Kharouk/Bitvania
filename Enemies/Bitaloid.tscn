@@ -843,6 +843,7 @@ radius = 20.0
 
 [node name="Bitaloid" instance=ExtResource( 1 )]
 script = ExtResource( 8 )
+MAX_SPEED = 50
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 0.777778 )
@@ -1029,6 +1030,21 @@ shape = SubResource( 1 )
 
 [node name="EnemyStats" parent="." index="5"]
 max_health = 100
+
+[node name="RightWallCheck" type="RayCast2D" parent="." index="6"]
+enabled = true
+cast_to = Vector2( 16, 0 )
+collision_mask = 2
+
+[node name="LeftWallCheck" type="RayCast2D" parent="." index="7"]
+enabled = true
+cast_to = Vector2( -16, 0 )
+collision_mask = 2
+
+[node name="Shooting" type="Timer" parent="." index="8"]
+wait_time = 0.3
+autostart = true
+[connection signal="timeout" from="Shooting" to="." method="_on_Shooting_timeout"]
 
 [editable path="Hitbox"]
 

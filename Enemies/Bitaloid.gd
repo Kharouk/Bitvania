@@ -17,13 +17,25 @@ func _ready():
 func _process(delta):
   chase_player(delta)
 
-func chase_player(delta):
+func chase_player(delta) -> void:
   var player = MainInstances.Player
   if player != null:
     var direction_to_move = sign(player.global_position.x - global_position.x)
     motion.x += ACCELERATION * delta * direction_to_move
     motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-    global_position += motion.x * delta
+    global_position.x += motion.x * delta
+    # lerping our current rotation degree to the direction we're heading in, at the speed of .3
+    rotation_degrees = lerp(rotation_degrees, (motion.x / MAX_SPEED ) * 10, 0.3)
+
+    if ((rightWallCheck.is_colliding() and motion.x > 0) or 
+      (leftWallCheck.is_colliding() and motion.x < 0)):
+      motion.x *= -0.5
+
+func fire_bullet() -> void:
+  var bullet = Utils.instance_scene_on_main(Bullet, global_position)
+  var velocity = Vector2.DOWN * 50
+  velocity = velocity.rotated(deg2rad(rand_range(-30, 30)))
+  bullet.velocity = velocity
 
 func _on_Shooting_timeout():
-	pass # Replace with function body.
+	fire_bullet()

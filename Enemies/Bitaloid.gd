@@ -39,3 +39,8 @@ func fire_bullet() -> void:
 
 func _on_Shooting_timeout():
 	fire_bullet()
+
+
+func _on_EnemyStats_enemy_died():
+  emit_signal("died")
+  ._on_EnemyStats_enemy_died()

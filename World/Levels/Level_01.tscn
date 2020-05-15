@@ -17,21 +17,34 @@ scale = Vector2( -1, 1 )
 connection = ExtResource( 3 )
 new_level_path = "res://World/Levels/Level_00.tscn"
 
-[node name="Bitaloid" parent="." index="2" instance=ExtResource( 4 )]
-position = Vector2( 159, 100 )
-
-[node name="Spikes" parent="." index="3" instance=ExtResource( 5 )]
+[node name="SpikesCollection" parent="." index="2" instance=ExtResource( 5 )]
 position = Vector2( 112, 64 )
 rotation = 1.5708
 
-[node name="Spikes3" parent="." index="4" instance=ExtResource( 5 )]
-position = Vector2( 112, 48 )
-rotation = 1.5708
+[node name="Spikes3" parent="SpikesCollection" index="2" instance=ExtResource( 5 )]
+position = Vector2( -16, 0 )
 
-[node name="Spikes4" parent="." index="5" instance=ExtResource( 5 )]
-position = Vector2( 208, 64 )
-rotation = -1.5708
+[node name="Spikes5" parent="SpikesCollection" index="3" instance=ExtResource( 5 )]
+position = Vector2( -32, 0 )
 
-[node name="Spikes2" parent="." index="6" instance=ExtResource( 5 )]
-position = Vector2( 208, 80 )
-rotation = -1.5708
+[node name="Spikes6" parent="SpikesCollection" index="4" instance=ExtResource( 5 )]
+position = Vector2( -48, 0 )
+
+[node name="Spikes4" parent="SpikesCollection" index="5" instance=ExtResource( 5 )]
+position = Vector2( -3.8147e-06, -96 )
+rotation = 3.14159
+
+[node name="Spikes2" parent="SpikesCollection" index="6" instance=ExtResource( 5 )]
+position = Vector2( 16, -96 )
+rotation = 3.14159
+
+[node name="Spikes8" parent="SpikesCollection" index="7" instance=ExtResource( 5 )]
+position = Vector2( -32, -96 )
+rotation = 3.14159
+
+[node name="Spikes7" parent="SpikesCollection" index="8" instance=ExtResource( 5 )]
+position = Vector2( -16, -96 )
+rotation = 3.14159
+
+[node name="Bitaloid" parent="." index="3" instance=ExtResource( 4 )]
+position = Vector2( 159, 100 )

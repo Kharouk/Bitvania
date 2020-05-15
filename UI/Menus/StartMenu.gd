@@ -9,7 +9,7 @@ func _on_StartButton_pressed():
 
 
 func _on_LoadButton_pressed():
-	pass # Replace with function body.
+	pass 
 
 
 func _on_QuitButton_pressed():

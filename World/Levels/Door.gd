@@ -3,6 +3,8 @@ extends Area2D
 # the door it connects to, a resource shared between two doors
 # the unique connecton between two doors
 export(Resource) var connection = null
+
+# Sets the file path that we can attach to change levels:
 export(String, FILE, "*.tscn") var new_level_path = ''
 
 var active = true

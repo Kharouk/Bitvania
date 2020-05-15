@@ -30,3 +30,12 @@ func load_game():
       var newNode = load(current_line["nodename"]).instance()
       get_node(current_line["parent"]).add_child(newNode, true)
       newNode.position = Vector2(current_line["position_x"], current_line["position_y"])
+
+      for property in current_line.keys():
+        if (property == "nodename" 
+        or property == "parent"
+        or property == "position_x"
+        or property == "property_y"):
+          continue
+        newNode.set(property, current_line[property])
+  save_file.close()

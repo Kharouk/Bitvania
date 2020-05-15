@@ -27,12 +27,12 @@ func load_game():
   while !save_file.eof_reached():
     var current_line = parse_json(save_file.get_line())
     if current_line != null:
-      var newNode = load(current_line["nodename"]).instance()
+      var newNode = load(current_line["filename"]).instance()
       get_node(current_line["parent"]).add_child(newNode, true)
       newNode.position = Vector2(current_line["position_x"], current_line["position_y"])
 
       for property in current_line.keys():
-        if (property == "nodename" 
+        if (property == "filename" 
         or property == "parent"
         or property == "position_x"
         or property == "property_y"):

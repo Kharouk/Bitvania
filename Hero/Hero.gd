@@ -64,6 +64,16 @@ func _ready():
 func _exit_tree():
 	MainInstances.Player = null
 
+func save() -> Dictionary:
+	var save_dictionary = {
+		"filename": get_filename(),
+		"parent": get_parent().get_path(),
+		"position_x": position.x,
+		"position_y": position.y,
+	}
+
+	return save_dictionary
+
 # similar to _process but for physics based movement
 func _physics_process(delta):
 	has_just_jumped = false

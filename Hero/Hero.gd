@@ -58,13 +58,16 @@ signal hit_door(door)
 func set_invincible(value):
 	invincible = value
 
-func _ready():
+func _ready() -> void:
 	PlayerStats.connect("player_died", self, "_on_died")
 	MainInstances.Player = self
-	cameraFollow.remote_path = MainInstances.WorldCamera.get_path()
-
-func _exit_tree():
+	call_deferred("assign_camera")
+	
+func _exit_tree() -> void:
 	MainInstances.Player = null
+		
+func assign_camera() -> void:
+	cameraFollow.remote_path = MainInstances.WorldCamera.get_path()
 
 func save() -> Dictionary:
 	var save_dictionary = {

@@ -36,6 +36,7 @@ func load_game():
         or property == "parent"
         or property == "position_x"
         or property == "property_y"):
-          continue
+          continue # else:
         newNode.set(property, current_line[property])
+
   save_file.close()

@@ -1,5 +1,11 @@
 extends Node
 
+func retrieve_save_file():
+  var file = File.new()
+  file.open("user://savegame.save", File.READ)
+  var line = parse_json(file.get_line())
+  print("YO: ", line)
+  file.close()
 
 func save_game():
   var save_file = File.new()

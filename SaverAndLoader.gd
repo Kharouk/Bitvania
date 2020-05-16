@@ -1,7 +1,6 @@
 extends Node
 
 var is_loading = false
-var loaded_file = true
 
 func retrieve_save_file():
   var file = File.new()
@@ -13,6 +12,7 @@ func retrieve_save_file():
 func delete_file():
   var dir = Directory.new()
   dir.remove("user://savegame.save")
+  dir.close()
 
 func save_game():
   var save_file = File.new()
@@ -29,12 +29,11 @@ func save_game():
 func load_game():
   var save_file = File.new()
   if !save_file.file_exists("user://savegame.save"):
-    loaded_file = false
     return
   
   var persistingNodes = get_tree().get_nodes_in_group("Persists")
   for node in persistingNodes:
-    node.queue_free()
+	  node.queue_free()
 
   save_file.open("user://savegame.save", File.READ)
 
@@ -51,6 +50,7 @@ func load_game():
         or property == "position_x"
         or property == "property_y"):
           continue # else:
-        newNode.set(property, current_line[property])
+                   
+          newNode.set(property, current_line[property])
 
   save_file.close()

@@ -16,4 +16,4 @@ connection = ExtResource( 3 )
 new_level_path = "res://World/Levels/Level_01.tscn"
 
 [node name="SaveStation" parent="." index="2" instance=ExtResource( 4 )]
-position = Vector2( 115, 160 )
+position = Vector2( 15, 160 )

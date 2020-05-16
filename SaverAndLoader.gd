@@ -23,7 +23,9 @@ func save_game():
   for node in persistingNodes:
     var node_data = node.save()
     save_file.store_line(to_json(node_data))
-    save_file.close()
+
+  # make sure you untab this so that saving works :O 
+  save_file.close()
 
 
 func load_game():
@@ -52,5 +54,4 @@ func load_game():
           continue # else:
                    
           newNode.set(property, current_line[property])
-
   save_file.close()

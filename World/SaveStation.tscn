@@ -10,7 +10,6 @@ extents = Vector2( 8, 10 )
 [sub_resource type="Animation" id=2]
 resource_name = "Save"
 length = 0.5
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("WhiteSpaceSprite:scale")
@@ -47,6 +46,7 @@ shape = SubResource( 1 )
 [node name="WhiteSpaceSprite" type="Sprite" parent="."]
 position = Vector2( 0, -14 )
 scale = Vector2( 1e-05, 1.25 )
+z_index = -2
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

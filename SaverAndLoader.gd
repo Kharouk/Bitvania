@@ -1,5 +1,7 @@
 extends Node
 
+var is_loading = false
+
 func retrieve_save_file():
   var file = File.new()
   file.open("user://savegame.save", File.READ)

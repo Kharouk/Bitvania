@@ -50,6 +50,7 @@ onready var fireWeaponTimer = $FireWeaponTimer # setting up our gun's "fire rate
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
 onready var powerUpDetector = $PowerUpDetector
+onready var cameraFollow = $CameraFollow
 
 # can ignore since we call the signal from another script
 signal hit_door(door)
@@ -60,6 +61,7 @@ func set_invincible(value):
 func _ready():
 	PlayerStats.connect("player_died", self, "_on_died")
 	MainInstances.Player = self
+	cameraFollow.remote_path = MainInstances.WorldCamera.get_path()
 
 func _exit_tree():
 	MainInstances.Player = null

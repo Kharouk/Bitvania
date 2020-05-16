@@ -1,4 +1,5 @@
 extends Node
+# TODO :: Would be great to introduce a shooting mouse cursor!
 
 var MainInstances = ResourceLoader.MainInstances
 

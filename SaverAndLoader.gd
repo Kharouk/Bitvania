@@ -1,7 +1,7 @@
 extends Node
 
 var is_loading = false
-var loaded_file = false
+var loaded_file = true
 
 func retrieve_save_file():
   var file = File.new()
@@ -32,7 +32,6 @@ func load_game():
     loaded_file = false
     return
   
-  loaded_file = true
   var persistingNodes = get_tree().get_nodes_in_group("Persists")
   for node in persistingNodes:
     node.queue_free()

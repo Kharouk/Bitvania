@@ -39,9 +39,10 @@ func load_game():
   save_file.open("user://savegame.save", File.READ)
 
   while !save_file.eof_reached():
-    var current_line = parse_json(save_file.get_line())
-
-    if current_line != null:
+    var line = save_file.get_line()
+    
+    if line != null and line.length() > 0:
+      var current_line = parse_json(line)
       var newNode = load(current_line["filename"]).instance()
       get_node(current_line["parent"]).add_child(newNode, true)
       newNode.position = Vector2(current_line["position_x"], current_line["position_y"])

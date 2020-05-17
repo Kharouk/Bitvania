@@ -29,8 +29,9 @@ func set_missiles(value):
 	missiles = clamp(value, 0, max_missiles)
 	emit_signal("player_missiles_changed", missiles)
 
-func set_missiles_unlocked(isUnlocked):
+func set_missiles_unlocked(isUnlocked: bool) -> void:
 	missiles_unlocked = isUnlocked
+	SaverAndLoader.custom_data.missiles_unlocked = isUnlocked
 	emit_signal("player_missiles_unlocked", missiles_unlocked)
 
 func refill_player_stats():

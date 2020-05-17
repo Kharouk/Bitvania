@@ -71,8 +71,8 @@ func assign_camera() -> void:
 
 func save() -> Dictionary:
 	var save_dictionary = {
-		"filename": get_filename(),
-		"parent": get_parent().get_path(),
+		"filename"	: get_filename(),
+		"parent"		: get_parent().get_path(),
 		"position_x": position.x,
 		"position_y": position.y,
 	}

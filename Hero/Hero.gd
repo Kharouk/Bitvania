@@ -52,7 +52,7 @@ onready var gun = $Sprite/PlayerGun
 onready var powerUpDetector = $PowerUpDetector
 onready var cameraFollow = $CameraFollow
 
-# can ignore since we call the signal from another script
+# warning-ignore:unused_signal
 signal hit_door(door)
 
 func set_invincible(value):
@@ -62,9 +62,15 @@ func _ready() -> void:
 	PlayerStats.connect("player_died", self, "_on_died")
 	MainInstances.Player = self
 	call_deferred("assign_camera")
-	
-func _exit_tree() -> void:
+
+""" 
+Overwrite queue free to first set player to null since doing it on the exit tree
+was not fast enough and so when we load again MainInstances would have player be equal
+to null.
+"""
+func queue_free() -> void:
 	MainInstances.Player = null
+	.queue_free()
 		
 func assign_camera() -> void:
 	cameraFollow.remote_path = MainInstances.WorldCamera.get_path()

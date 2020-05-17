@@ -50,6 +50,7 @@ onready var fireWeaponTimer = $FireWeaponTimer # setting up our gun's "fire rate
 onready var muzzle = $Sprite/PlayerGun/Sprite/Muzzle
 onready var gun = $Sprite/PlayerGun
 onready var powerUpDetector = $PowerUpDetector
+onready var cameraFollow = $CameraFollow
 
 # can ignore since we call the signal from another script
 signal hit_door(door)
@@ -57,12 +58,26 @@ signal hit_door(door)
 func set_invincible(value):
 	invincible = value
 
-func _ready():
+func _ready() -> void:
 	PlayerStats.connect("player_died", self, "_on_died")
 	MainInstances.Player = self
-
-func _exit_tree():
+	call_deferred("assign_camera")
+	
+func _exit_tree() -> void:
 	MainInstances.Player = null
+		
+func assign_camera() -> void:
+	cameraFollow.remote_path = MainInstances.WorldCamera.get_path()
+
+func save() -> Dictionary:
+	var save_dictionary = {
+		"filename"	: get_filename(),
+		"parent"		: get_parent().get_path(),
+		"position_x": position.x,
+		"position_y": position.y,
+	}
+
+	return save_dictionary
 
 # similar to _process but for physics based movement
 func _physics_process(delta):

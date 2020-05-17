@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Levels/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Levels/Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Levels/DoorConnections/00_link_01.tres" type="Resource" id=3]
 [ext_resource path="res://World/Levels/DoorConnections/01_link_boss.tres" type="Resource" id=4]
 [ext_resource path="res://Enemies/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/SaveStation.tscn" type="PackedScene" id=6]
 
 [node name="Level_01" instance=ExtResource( 1 )]
 
@@ -50,3 +51,6 @@ rotation = 3.14159
 position = Vector2( 280, 128 )
 connection = ExtResource( 4 )
 new_level_path = "res://World/Levels/BossLevel.tscn"
+
+[node name="SaveStation" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 201, 144 )

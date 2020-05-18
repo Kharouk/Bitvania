@@ -16,6 +16,7 @@ func set_paused(value):
 		SoundFX.play("Unpause", 1, -20)
 
 func _on_Resume_pressed():
+	SoundFX.play("Click", 1, -20)
 	self.paused = false
 
 

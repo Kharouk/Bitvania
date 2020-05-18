@@ -6,4 +6,5 @@ func _ready():
 
 func _pickup():
   PlayerStats.missiles_unlocked = true
+  SoundFX.play("Powerup", 1, -20)
   queue_free()

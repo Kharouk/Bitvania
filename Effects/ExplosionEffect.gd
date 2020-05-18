@@ -1,4 +1,4 @@
 extends Node2D
 
 func _ready():
-  SoundFX.play("Explosion", rand_range(0.6, 1.2), 1)
+  SoundFX.play("Explosion", rand_range(0.6, 1), 1)

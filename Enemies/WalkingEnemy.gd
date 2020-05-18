@@ -16,6 +16,7 @@ onready var wallRight = $WallRight
 
 func _ready():
 	state = WALKING_DIRECTION
+	motion.y = 8
 	
 func _physics_process(_delta):
 	# like a switch statement:

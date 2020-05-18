@@ -159,7 +159,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="FireWeaponTimer" type="Timer" parent="."]
-wait_time = 0.33
+wait_time = 0.3
 one_shot = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]

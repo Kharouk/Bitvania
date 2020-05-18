@@ -13,4 +13,3 @@ func _on_Door_body_entered(Hero):
 	if active == true:
 		Hero.emit_signal("hit_door", self)
 		active = false
-		print('hello world')

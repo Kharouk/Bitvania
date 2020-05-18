@@ -1,5 +1,10 @@
 extends Node
 
+var custom_data = {
+	missiles_unlocked = false,
+	boss_defeated = false
+}
+
 var is_loading = false
 
 func retrieve_save_file():
@@ -16,6 +21,8 @@ func delete_file():
 func save_game():
 	var save_file = File.new()
 	save_file.open("user://savegame.save", File.WRITE)
+
+	save_file.store_line(to_json(custom_data))
 
 	var persistingNodes = get_tree().get_nodes_in_group("Persists")
 
@@ -37,6 +44,11 @@ func load_game():
 
 	save_file.open("user://savegame.save", File.READ)
 
+	# if not an empty file:
+	if not save_file.eof_reached():
+		# gets the first line of the file, parses it, and updates our dictionary
+		custom_data = parse_json(save_file.get_line())
+		
 	while !save_file.eof_reached():
 		var line = save_file.get_line()
 		if line != null and line.length() > 0:

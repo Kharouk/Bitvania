@@ -39,6 +39,10 @@ tile_data = PoolIntArray( 524285, 0, 3, 589821, 0, 131075 )
 
 [node name="Bitaloid" parent="." index="4" instance=ExtResource( 4 )]
 position = Vector2( 248, 115 )
+MAX_SPEED = 100
+
+[node name="EnemyStats" parent="Bitaloid" index="5"]
+max_health = 3
 
 [node name="SpikesCollection" parent="." index="5" instance=ExtResource( 8 )]
 position = Vector2( 208, 240 )
@@ -46,15 +50,12 @@ scale = Vector2( 0.994821, 0.985629 )
 
 [node name="Spikes5" parent="SpikesCollection" index="2" instance=ExtResource( 8 )]
 position = Vector2( -80.4165, -16.2333 )
-scale = Vector2( 1, 1 )
 
 [node name="Spikes2" parent="SpikesCollection" index="3" instance=ExtResource( 8 )]
 position = Vector2( 112.583, 0 )
-scale = Vector2( 1, 1 )
 
 [node name="Spikes3" parent="SpikesCollection" index="4" instance=ExtResource( 8 )]
 position = Vector2( 176.916, 0 )
-scale = Vector2( 1, 1 )
 
 [node name="Spikes4" parent="SpikesCollection" index="5" instance=ExtResource( 8 )]
 position = Vector2( 176.916, -48.6999 )
@@ -62,6 +63,7 @@ rotation = -1.5708
 scale = Vector2( 1.00933, 0.99076 )
 [connection signal="area_triggered" from="Trigger" to="." method="_on_Trigger_area_triggered"]
 [connection signal="body_entered" from="Trigger" to="Trigger" method="_on_Trigger_body_entered"]
+[connection signal="died" from="Bitaloid" to="." method="_on_Bitaloid_died"]
 
 [editable path="Trigger"]
 

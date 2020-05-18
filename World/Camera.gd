@@ -15,8 +15,9 @@ func _process(_delta):
 	offset_h = rand_range(-shake, shake)
 	offset_v = rand_range(-shake, shake)
 
-func _exit_tree():
+func queue_free():
 	MainInstances.WorldCamera = null
+	.queue_free()
 
 func screen_shake(amount, duration):
 	shake = amount

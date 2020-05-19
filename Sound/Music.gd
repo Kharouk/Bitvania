@@ -19,4 +19,5 @@ func queue_stop():
 	musicPlayer.stop()
 
 func _on_AudioStreamPlayer_finished():
+	queue.shuffle()
 	play_soundtrack()

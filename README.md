@@ -1,2 +1,2 @@
 # Welcome to Bitvania
-*81% complete.*
+*100% complete.*
